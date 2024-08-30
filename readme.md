@@ -4,8 +4,8 @@ This is just a general collection of useful little gdscript snipplets. They're a
 
 ## [SignalBundle](utilities/signal_bundle/)
 This is a utility class meant to make awaiting signals easier. it allows to await multiple signals like this:  
-`await SignalBundler.any([signal1, signal2, ...])`  
-`await SignalBundler.all([signal1, signal2, ...])`  
+`await SignalBundle.any([signal1, signal2, ...])`  
+`await SignalBundle.all([signal1, signal2, ...])`  
 You just need to add the file, the functions are static, no need to autoload anything. Awaiting any signal even returns the signal that emitted.
 
 ## [Freecam](utilities/freecam/)
