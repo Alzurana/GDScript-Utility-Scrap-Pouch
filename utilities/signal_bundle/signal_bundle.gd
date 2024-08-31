@@ -3,8 +3,8 @@ class_name SignalBundle
 
 ## Usage:[br]
 ## It is simplest to just use the 2 static functions any and all like this:
-## [codeblock]await SignalBundler.any([signal1, signal2, ...])
-## await SignalBundler.all([signal1, signal2, ...])[/codeblock]
+## [codeblock]await SignalBundle.any([signal1, signal2, ...])
+## await SignalBundle.all([signal1, signal2, ...])[/codeblock]
 ## I didn't write a more sophisticated interface as that just wasn't needed. If you want to
 ## you can instantiate this class yourself with new and even monitor which signals are still
 ## missing in AWAIT_MODE.ALL but I'd recommend you modify this in that case and make it a bit
@@ -39,7 +39,7 @@ func _init(init_signals: Array[Signal], init_await_mode: AWAIT_MODE) -> void:
 
 ## Coroutine you can await until any signal emitted
 ## Essentially what you do is call it like this:
-## [codeblock]await SignalBundler.any([signal1, signal2, ...])[/codeblock]
+## [codeblock]await SignalBundle.any([signal1, signal2, ...])[/codeblock]
 ## It will return as soon as one of the provided signals emitted. It is important
 ## you "await" this method, otherwise it will just return immediately.
 ## It will also return which signal triggered it should you choose to capture that.
@@ -51,7 +51,7 @@ static func any(signals : Array[Signal]) -> Signal:
 
 ## Coroutine you can await until all signals emitted
 ## Essentially what you do is call it like this:
-## [codeblock]await SignalBundler.all([signal1, signal2, ...])[/codeblock]
+## [codeblock]await SignalBundle.all([signal1, signal2, ...])[/codeblock]
 ## It will return as soon as all of the provided signals emitted. It is important
 ## you "await" this method, otherwise it will just return immediately.
 static func all(signals : Array[Signal]):
