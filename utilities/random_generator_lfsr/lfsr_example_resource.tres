@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="RandomGeneratorLFSR" load_steps=2 format=3 uid="uid://38lgesbnlw4h"]
+
+[ext_resource type="Script" path="res://utilities/random_generator_lfsr/random_generator_lfsr.gd" id="1_ernnn"]
+
+[resource]
+script = ExtResource("1_ernnn")
+bit_depth = 8
+seed = 42
+state = 42

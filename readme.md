@@ -25,3 +25,10 @@ This is just a bunch of static functions that tend to be useful.
 - general logarithm (You can choose the base via a parameter)
 
 This list might not be complete
+
+## [RandomGeneratorLFSR](random_generator_lfsr/)
+It's a Linear Feedback Shift Register made in GDScript.
+It supports bit depths 2 to 24. If you need one for your project, you'll know. I'd
+recommend checking the godot internal documentation page for this. I tried to be very
+thourough with this. Alternatively check out [Wikipedia](https://en.wikipedia.org/wiki/Linear-feedback_shift_register).
+I first stumbled on them in [this talk about the making of pitfall](https://youtu.be/MBT1OK6VAIU?si=eEunfmleVTLEvtve).
