@@ -3,9 +3,9 @@
 This is just a general collection of useful little gdscript snipplets. They're all documented. Please consult the in editor documentation and check out the examples.
 
 ## [SignalBundle](utilities/signal_bundle/)
-This is a utility class meant to make awaiting signals easier. it allows to await multiple signals like this:  
-`await SignalBundle.any([signal1, signal2, ...])`  
-`await SignalBundle.all([signal1, signal2, ...])`  
+This is a utility class meant to make awaiting signals easier. it allows to await multiple signals like this:<br>
+`await SignalBundle.any([signal1, signal2, ...])`<br>
+`await SignalBundle.all([signal1, signal2, ...])`<br>
 You just need to add the file, the functions are static, no need to autoload anything. Awaiting any signal even returns the signal that emitted.
 
 ## [Freecam](utilities/freecam/)
@@ -29,6 +29,5 @@ This list might not be complete
 ## [RandomGeneratorLFSR](random_generator_lfsr/)
 It's a Linear Feedback Shift Register made in GDScript.
 It supports bit depths 2 to 24. If you need one for your project, you'll know. I'd
-recommend checking the godot internal documentation page for this. I tried to be very
-thourough with this. Alternatively check out [Wikipedia](https://en.wikipedia.org/wiki/Linear-feedback_shift_register).
+recommend checking the godot internal documentation page for this. Alternatively check out [Wikipedia](https://en.wikipedia.org/wiki/Linear-feedback_shift_register).
 I first stumbled on them in [this talk about the making of pitfall](https://youtu.be/MBT1OK6VAIU?si=eEunfmleVTLEvtve).
