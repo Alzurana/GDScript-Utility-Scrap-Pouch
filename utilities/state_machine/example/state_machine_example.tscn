@@ -1,0 +1,81 @@
+[gd_scene load_steps=12 format=3 uid="uid://05gwef54uoqd"]
+
+[ext_resource type="Script" path="res://utilities/state_machine/scripts/state_machine.gd" id="1_s31bd"]
+[ext_resource type="Script" path="res://utilities/state_machine/example/enemy.gd" id="1_xlmag"]
+[ext_resource type="Script" path="res://utilities/state_machine/example/state_idle.gd" id="2_q08uc"]
+[ext_resource type="Script" path="res://utilities/state_machine/scripts/state.gd" id="2_suhq0"]
+[ext_resource type="Script" path="res://utilities/state_machine/scripts/transition_condition.gd" id="3_vfhdm"]
+[ext_resource type="Script" path="res://utilities/state_machine/scripts/transition.gd" id="4_ih8e7"]
+[ext_resource type="Script" path="res://utilities/state_machine/example/state_follow.gd" id="4_vjqe4"]
+[ext_resource type="Script" path="res://utilities/state_machine/example/state_attack.gd" id="5_4txoh"]
+[ext_resource type="Texture2D" uid="uid://bwvgs5owavvn1" path="res://utilities/state_machine/assets/state_machine.svg" id="8_x76dq"]
+
+[sub_resource type="Gradient" id="Gradient_oq644"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_i0u7b"]
+gradient = SubResource("Gradient_oq644")
+width = 20
+height = 20
+
+[node name="Main" type="Node"]
+
+[node name="Enemy" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+texture = SubResource("GradientTexture2D_i0u7b")
+script = ExtResource("1_xlmag")
+
+[node name="Icon" type="Sprite2D" parent="Enemy"]
+texture = ExtResource("8_x76dq")
+
+[node name="StateMachine" type="Node" parent="Enemy" node_paths=PackedStringArray("initial_state")]
+script = ExtResource("1_s31bd")
+initial_state = NodePath("StartingState")
+
+[node name="Idle" type="Node" parent="Enemy/StateMachine"]
+script = ExtResource("2_q08uc")
+
+[node name="ToFollow" type="Node" parent="Enemy/StateMachine/Idle" node_paths=PackedStringArray("node_to_check", "target_state")]
+script = ExtResource("3_vfhdm")
+node_to_check = NodePath("../../..")
+property_name = &"distance_to_player"
+operation = 0
+check_value = 500.0
+target_state = NodePath("../../Follow")
+
+[node name="Follow" type="Node" parent="Enemy/StateMachine"]
+script = ExtResource("4_vjqe4")
+
+[node name="ToAttack" type="Node" parent="Enemy/StateMachine/Follow" node_paths=PackedStringArray("node_to_check", "target_state")]
+script = ExtResource("3_vfhdm")
+node_to_check = NodePath("../../..")
+property_name = &"distance_to_player"
+operation = 0
+check_value = 50.0
+target_state = NodePath("../../Attack")
+
+[node name="ToIdle" type="Node" parent="Enemy/StateMachine/Follow" node_paths=PackedStringArray("node_to_check", "target_state")]
+script = ExtResource("3_vfhdm")
+node_to_check = NodePath("../../..")
+property_name = &"distance_to_player"
+operation = 4
+check_value = 500.0
+target_state = NodePath("../../Idle")
+
+[node name="Attack" type="Node" parent="Enemy/StateMachine"]
+script = ExtResource("5_4txoh")
+
+[node name="ToFollow" type="Node" parent="Enemy/StateMachine/Attack" node_paths=PackedStringArray("node_to_check", "target_state")]
+script = ExtResource("3_vfhdm")
+node_to_check = NodePath("../../..")
+property_name = &"distance_to_player"
+operation = 4
+check_value = 50.0
+target_state = NodePath("../../Follow")
+
+[node name="StartingState" type="Node" parent="Enemy/StateMachine"]
+script = ExtResource("2_suhq0")
+
+[node name="AlwaysToIdle" type="Node" parent="Enemy/StateMachine/StartingState" node_paths=PackedStringArray("target_state")]
+script = ExtResource("4_ih8e7")
+target_state = NodePath("../../Idle")
