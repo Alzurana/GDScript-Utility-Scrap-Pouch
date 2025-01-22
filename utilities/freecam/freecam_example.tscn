@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://jdlb5qtuanw7"]
 
-[ext_resource type="Script" path="res://utilities/freecam/freecam.gd" id="1_f4ync"]
+[ext_resource type="Script" uid="uid://l1p17mel0s22" path="res://utilities/freecam/freecam.gd" id="1_f4ync"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_hxpma"]
 

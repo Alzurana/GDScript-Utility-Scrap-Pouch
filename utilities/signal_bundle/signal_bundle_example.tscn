@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dnhwolddutpmy"]
 
-[ext_resource type="Script" path="res://utilities/signal_bundle/signal_bundle_example.gd" id="1_0rpbf"]
+[ext_resource type="Script" uid="uid://l5reaudws54u" path="res://utilities/signal_bundle/signal_bundle_example.gd" id="1_0rpbf"]
 
 [node name="SignalBundleExample" type="Node"]
 script = ExtResource("1_0rpbf")

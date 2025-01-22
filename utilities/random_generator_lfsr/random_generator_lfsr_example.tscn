@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://duw8ndvty2tsu"]
 
-[ext_resource type="Script" path="res://utilities/random_generator_lfsr/random_generator_lfsr_example.gd" id="1_r330s"]
+[ext_resource type="Script" uid="uid://be76qr3kbhjky" path="res://utilities/random_generator_lfsr/random_generator_lfsr_example.gd" id="1_r330s"]
 [ext_resource type="Resource" uid="uid://38lgesbnlw4h" path="res://utilities/random_generator_lfsr/lfsr_example_resource.tres" id="2_rdplr"]
 
 [node name="RandomGeneratorLfsrExample" type="Node"]
