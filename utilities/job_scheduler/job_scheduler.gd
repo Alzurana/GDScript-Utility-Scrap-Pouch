@@ -94,7 +94,7 @@ static var _is_not_initialized: bool = true
 ## [param priority] This defaults to normal priority and if you do not care about job order
 ## then this is irrelevant for you. For more information about execution order, check the detailed
 ## class description on the topic: See [class JobScheduler]
-static func add_job(function_to_call: Callable, priority: PRIORITY = PRIORITY.NORMAL):
+static func add_job(function_to_call: Callable, priority: PRIORITY = PRIORITY.NORMAL) -> Job:
 	if _is_not_initialized:
 		_init()
 	var new_job: Job = Job.new(function_to_call, priority)
@@ -102,6 +102,7 @@ static func add_job(function_to_call: Callable, priority: PRIORITY = PRIORITY.NO
 	_pending_jobs[priority].push_back(new_job)
 	_pending_jobs_mutex.unlock()
 	_wakeup_threads()
+	return new_job
 
 
 ## Joins and waits until all jobs have finished.
