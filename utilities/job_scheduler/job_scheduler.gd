@@ -198,9 +198,9 @@ static func _thread_main_function(priority: PRIORITY) -> void:
 			PRIORITY.LOW:
 				current_job = _pending_jobs[PRIORITY.LOW].pop_front()
 				if not current_job:
-					current_job = _pending_jobs[PRIORITY.NORMAL].pop_front()
+					current_job = _pending_jobs[PRIORITY.HIGH].pop_front()
 					if not current_job:
-						current_job = _pending_jobs[PRIORITY.HIGH].pop_front()
+						current_job = _pending_jobs[PRIORITY.NORMAL].pop_front()
 			PRIORITY.NORMAL:
 				current_job = _pending_jobs[PRIORITY.NORMAL].pop_front()
 				if not current_job:
