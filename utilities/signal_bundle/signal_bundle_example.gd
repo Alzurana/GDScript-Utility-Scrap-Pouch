@@ -1,5 +1,4 @@
 extends Node
-class_name Main
 ## This is really just a script to test all those different utilities
 
 
