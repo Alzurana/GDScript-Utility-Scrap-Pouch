@@ -26,13 +26,13 @@ This is just a bunch of static functions that tend to be useful.
 
 This list might not be complete
 
-## [RandomGeneratorLFSR](random_generator_lfsr/)
+## [RandomGeneratorLFSR](utilities/random_generator_lfsr/)
 It's a Linear Feedback Shift Register made in GDScript.
 It supports bit depths 2 to 24. If you need one for your project, you'll know. I'd
 recommend checking the godot internal documentation page for this. Alternatively check out [Wikipedia](https://en.wikipedia.org/wiki/Linear-feedback_shift_register).
 I first stumbled on them in [this talk about the making of pitfall](https://youtu.be/MBT1OK6VAIU?si=eEunfmleVTLEvtve).
 
-## [StateMachine](state_machine/)
+## [StateMachine](utilities/state_machine/)
 This is a simple state machine with the node based scene tree of godot in mind. To use it you
 simply add a state machine node. Each state will be a child of the state machine. In oder to define
 your own behavior you must extend the State class in your script and overwrite the `_update` or
@@ -43,7 +43,7 @@ state transitions are handled via transition nodes which are children of each st
 there is one always transition and one conditional. You can also extend the Transition class in oder
 to make custom transitions that react to signals, for example.
 
-## [JobScheduler](job_scheduler/)
+## [JobScheduler](utilities/job_scheduler/)
 This is a static, multi threaded job scheduling system. It can be provided with any callable function
 and a priority and it will schedule it to run asynchonously on worker threads. The amount of
 worker threads is chosen to not choke out the main process but it can be customized. The job scheduler
@@ -51,4 +51,9 @@ will assign 20% of it's threads to low, 30% to medium and 50% to high priority. 
 jobs among these threads based on their priorities in a FiFo pattern for each priority bucket.
 Should a priority bucket not contain any jobs, threads will attempt to help out with other buckets.
 This allows for advanced job management where high priority tasks are being worked on fast but
-idle time is not wasted.
+idle time is not wasted. Another cool thing is that GDscript preserves the object a callable is from,
+meaning if you provide some generate function of a specific object the job will call that function
+on that specific object.<br>
+Usage as follows:<br>
+`JobScheduler.add_job(some_callable)`<br>
+`JobScheduler.add_job(some_other_callable, JobSchedulder.PRIORITY.HIGH)`<br>
