@@ -14,7 +14,7 @@ func _process(_delta: float) -> void:
 		print("Adding 10 jobs to the queue")
 		for i in range(5):
 			JobScheduler.add_job(_some_sqrt_job)
-			JobScheduler.add_job(_some_data_job)
+			JobScheduler.add_job(_some_data_job, JobScheduler.PRIORITY.LOW)
 	# update display
 	label_pending_jobs.text = "Pending Jobs: " + str(JobScheduler.get_pending_job_count())
 
