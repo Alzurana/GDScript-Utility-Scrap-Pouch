@@ -19,24 +19,46 @@ offset_right = 184.5
 offset_bottom = 76.5
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 
 [node name="MarginContainer" type="MarginContainer" parent="UI/PanelContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_right = 10
 
-[node name="VSplitContainer" type="VSplitContainer" parent="UI/PanelContainer/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/PanelContainer/MarginContainer"]
 layout_mode = 2
 
-[node name="LabelPendingJobs" type="Label" parent="UI/PanelContainer/MarginContainer/VSplitContainer"]
+[node name="LabelPendingJobs" type="Label" parent="UI/PanelContainer/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-text = "Pending Jobs: #"
+size_flags_horizontal = 0
+text = "Pending jobs: #"
 
-[node name="LabelInfoText" type="Label" parent="UI/PanelContainer/MarginContainer/VSplitContainer"]
+[node name="LabelPendingJobsHigh" type="Label" parent="UI/PanelContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 0
+text = "High priority: #"
+
+[node name="LabelPendingJobsNormal" type="Label" parent="UI/PanelContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Normal priority: #"
+
+[node name="LabelPendingJobsLow" type="Label" parent="UI/PanelContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Low priority: #"
+
+[node name="LabelInfoText" type="Label" parent="UI/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
 text = "This is the JobScheduler example scene. Each time you
-press return it adds 10 jobs to the queue which are
+press return it adds 60 jobs to the queue which are
 being processed by worker threads while the game
 is running. You may want to check your task manager
 to see the utilization."
