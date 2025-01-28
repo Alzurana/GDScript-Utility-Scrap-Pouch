@@ -179,7 +179,10 @@ static func _wakeup_threads() -> void:
 		if not _threads[i].is_alive():
 			if _threads[i].is_started():
 				_threads[i].wait_to_finish()
-			_threads[i].start(_thread_main_function.bind(_thread_priorities[i]))
+			var thread_priority := Thread.PRIORITY_NORMAL;
+			if _thread_priorities[i] == PRIORITY.LOW:
+				thread_priority = Thread.PRIORITY_LOW;
+			_threads[i].start(_thread_main_function.bind(_thread_priorities[i]), thread_priority)
 			pending_jobs -= 1
 			if pending_jobs <= 0:
 				break
