@@ -191,7 +191,7 @@ static func _wakeup_threads() -> void:
 # The execution order for different priorities is as follows:
 # HIGH: High, Normal, Low
 # NORMAL: Normal, High, Low
-# LOW:Low, Normal, High
+# LOW:Low, High, Normal
 # The way this code is written is a bit ugly but there is no urgency to refactor this.
 static func _thread_main_function(priority: PRIORITY) -> void:
 	while true:
