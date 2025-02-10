@@ -6,7 +6,6 @@ class_name JobScheduler
 ## See [member max_thread_number]
 ##
 ## USAGE:
-## Add this class as an autoload to your project.
 ## Use [method add_job] to add a job to the job queues. Jobs are functions that are being called
 ## on parallel threads. This means that your job functions must be thread safe.
 ## Jobs also have a priority which determines which threads will take on the job first.
