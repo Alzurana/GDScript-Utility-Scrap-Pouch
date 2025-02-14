@@ -2,6 +2,9 @@
 
 This is just a general collection of useful little gdscript snipplets. They're all documented. Please consult the in editor documentation and check out the examples.
 
+## .gitattributes and .gitignore
+Consider this projects git files for a simple project setup. The .gitattributes file sets up git LFS for any file within any "assets" folder, no matter where in the project tree. On top of that it will exclude .uid and .import files from this. The whole idea being that you never ever have to think about adding specific file types to your LFS and potentially forget. Just make sure anything LFS is in assets and you're set up with this automagic approach.
+
 ## [SignalBundle](utilities/signal_bundle/)
 This is a utility class meant to make awaiting signals easier. it allows to await multiple signals like this:<br>
 `await SignalBundle.any([signal1, signal2, ...])`<br>
