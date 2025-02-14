@@ -23,6 +23,7 @@ This is just a bunch of static functions that tend to be useful.
 - hermite
 - weighted hermite (generates tangents automatically)
 - general logarithm (You can choose the base via a parameter)
+- a RAII style mutex lock object.
 
 This list might not be complete
 
