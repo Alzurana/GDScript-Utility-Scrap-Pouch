@@ -1,2 +1,11 @@
 # Normalize EOL for all files that Git considers text files.
 * text=auto eol=lf
+
+# LFS for all asset folders
+**/assets/** filter=lfs diff=lfs merge=lfs -text
+# but ignore .import and .uid for LFS
+**/assets/**/*.import -filter -merge -diff
+**/assets/**/*.uid -filter -merge -diff
+# restore default text mode
+**/assets/**/*.import merge diff text=auto
+**/assets/**/*.uid merge diff text=auto
