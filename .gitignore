@@ -3,6 +3,9 @@
 /android/
 **/build/
 **/builds/
+**/Build/
+**/Builds/
+
 
 # Ignore random temp files
 *.blend1
