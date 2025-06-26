@@ -37,15 +37,17 @@ func _input(event: InputEvent) -> void:
 	# accumulate all mouse movement inputs that happened
 	if event is InputEventMouseMotion \
 		and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
-		_mouse_input += event.relative
+		_mouse_input += (event as InputEventMouseMotion).relative
 		get_viewport().set_input_as_handled()
 	# escape sequence to capture and release the mouse from freecam
 	elif event.is_action_released("ui_cancel"):
 		if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
-			print(get_script().get_path().get_file(), " Mouse visible")
+			@warning_ignore("unsafe_method_access")
+			print(get_script().resource_path.get_file(), " Mouse visible")
 			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 		else:
-			print(get_script().get_path().get_file(), " Mouse captured")
+			@warning_ignore("unsafe_method_access")
+			print(get_script().resource_path.get_file(), " Mouse captured")
 			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 
@@ -65,8 +67,8 @@ func _handle_controls(delta: float) -> void:
 	var input_right := Input.get_axis("ui_left", "ui_right")
 	var forward_dir := -get_global_transform().basis.z
 	var right_dir := get_global_transform().basis.x
-	var move_forward = forward_dir * input_forward * movement_speed * delta
-	var move_right = right_dir * input_right * movement_speed * delta
+	var move_forward := forward_dir * input_forward * movement_speed * delta
+	var move_right := right_dir * input_right * movement_speed * delta
 	position = move_forward + move_right + position
 	# resetting input data
 	_mouse_input = Vector2(0.0, 0.0)
